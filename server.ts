@@ -74,6 +74,14 @@ export function app(): express.Express {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
+  // force SSL
+  // server.get('*', (req: any, res: any) => {
+  //   if (req.headers['x-forwarded-proto'] !== 'https') {
+  //     return res.redirect(`https://${req.headers.host}${req.url}`);
+  //   }
+  //   res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+  // });
+
   return server;
 }
 

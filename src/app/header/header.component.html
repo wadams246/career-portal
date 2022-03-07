@@ -1,0 +1,63 @@
+<div id="header">
+  <div class="header-container">
+    <!-- logo -->
+    <div class="logo-container">
+      <div class="logo">
+
+      </div>
+    </div>
+
+    <!-- mobile nav button -->
+    <div class="icon-container">
+      <div class="mobile-menu-toggle" (click)="toggleMobileNav()">
+        <span class="lines" [ngClass]="{ 'open': isMobileNavOpen }"></span>
+      </div>
+    </div>
+
+    <!-- navigation -->
+    <div class="nav-container">
+      <div class="nav-content">
+        <ul class="links">
+          <li>
+            <a href="">Link</a>
+          </li>
+          <li>
+            <a href="">Link</a>
+          </li>
+          <li>
+            <a href="">Link</a>
+          </li>
+          <li>
+            <a href="">Link</a>
+          </li>
+          <li>
+            <a href="">Link</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- mobile navigation -->
+    <div class="mobile-nav-container" [ngClass]="{ 'open': isMobileNavOpen }">
+      <div class="mobile-nav-content">
+        <ul class="links">
+          <li>
+            <a href="">Link</a>
+          </li>
+          <li>
+            <a href="">Link</a>
+          </li>
+          <li>
+            <a href="">Link</a>
+          </li>
+          <li>
+            <a href="">Link</a>
+          </li>
+          <li>
+            <a href="">Link</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

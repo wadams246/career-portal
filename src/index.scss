@@ -1,0 +1,21 @@
+@import './mixins.scss';
+
+$header-height: 96px;
+$header-width: 100%;
+$font-family: Raleway, sans-serif;
+$font-size: 14px;
+$primary-color: #800080  ;
+$secondary-color: #0091dd;
+$accent-color: #0c6569;
+$copy-color: #bfbc11;
+$shadow: 0 0 20px rgba(0,0,0,.15);
+$logo-height: 38px;
+$logo-width: 200px;
+
+
+// @font-face{
+//   font-family:Aeonik;
+//   src: url('assets/fonts/Aeonik-Medium.otf') format("opentype");
+//   font-weight:500;
+//   font-style:normal;
+// }

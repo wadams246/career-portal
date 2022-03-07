@@ -61,6 +61,21 @@ export class ApplyModalComponent implements OnInit {
     this.job = this.params['job'];
     this.source = this.params['source'];
     this.setupForm();
+
+    // if (this.shareService.currentLanguage === 'pl') {
+    //   this.isLoadingTranslations = true;
+    //   setTimeout(() => {
+    //     let uploadElement: any = document.getElementsByClassName('boxed');
+    //     let isRequiredElements: any = document.getElementsByClassName('error-text');
+
+    //     uploadElement[0].innerHTML = '<span>Choisissez un fichier</span><small>ou <strong class="link">cliquez pour parcourir</strong></small>';
+
+    //     for (let element of isRequiredElements) {
+    //       element.innerHTML = element.innerHTML.replace('is required', 'est requis');
+    //     }
+    //     this.isLoadingTranslations = false;
+    //   }, 300);
+    // }
   }
   public setupForm(): void {
     this.firstName = new TextBoxControl({
@@ -208,6 +223,7 @@ export class ApplyModalComponent implements OnInit {
         email: encodeURIComponent(this.form.value.email),
         phone: encodeURIComponent(this.form.value.phone || ''),
         format: this.form.value.resume[0].name.substring(this.form.value.resume[0].name.lastIndexOf('.') + 1),
+        // format: this.form.value.resume && this.form.value.resume[0].name.substring(this.form.value.resume[0].name.lastIndexOf('.') + 1) || 'TEXT',
       };
 
       if (this.form.value.gender) {
@@ -228,6 +244,21 @@ export class ApplyModalComponent implements OnInit {
 
       let formData: FormData = new FormData();
       formData.append('resume', this.form.value.resume[0].file);
+
+
+      // if (this.form.value.resume && this.form.value.resume.length) {
+      //   formData.append('resume', this.form.value.resume[0].file);
+      // } else {
+      //   let fileData = 'First Name:' + this.form.value.firstName;
+
+      //   fileData = fileData + '\n' + 'Last Name:' + this.form.value.lastName;
+      //   fileData = fileData + '\n' + 'City:' + this.form.value.city;
+      //   fileData = fileData + '\n' + 'State:' + this.form.value.state;
+      //   fileData = fileData + '\n' + 'Email:' + this.form.value.email;
+      //   fileData = fileData + '\n' + 'Phone:' + this.form.value.phone;
+
+      //   formData.append('resume', new File([fileData], 'resume', {type: 'text/plain', lastModified: new Date().getTime()}), 'resume');
+      // }
       this.applyService.apply(this.job.id, requestParams, formData).subscribe(this.applyOnSuccess.bind(this), this.applyOnFailure.bind(this) );
     }
   }

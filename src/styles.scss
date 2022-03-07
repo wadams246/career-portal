@@ -1,5 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~novo-elements/novo-elements";
+@import './index.scss';
+@import './mixins.scss';
+
+html {
+  height: 100%;
+  font-family: $font-family;
+  font-weight: 300;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #FFF;
+  height: 100%;
+}
 
 app-job-list {
   novo-loading {
@@ -11,11 +26,6 @@ app-job-list {
   }
 }
 
-body {
-  overflow: hidden;
-  background-color: #FFF;
-}
-
 novo-file-input {
   width: 100%;
 }
@@ -23,36 +33,75 @@ novo-file-input {
 app-job-list {
   novo-list>div>novo-list-item   {
     border-bottom: unset;
+    background: transparent;
+    padding: 12px 15px 6px 15px;
+    justify-content: space-between;
+
+    @include tablet() {
+      align-items: center;
+    }
 
     div.list-item {
+      display: block !important;
+      flex: unset;
       item-content i{
-       color: #4a89dc;
+       color: $primary-color !important;
       }
       >item-header item-title {
-        >h6 {
-          color: #4a89dc;
+        h6 {
+          padding-bottom: 10px !important;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+
+          @include tablet() {
+            padding-bottom: unset !important;
+          }
+          a {
+            color: $primary-color !important;
+            font-size: 16px;
+          }
         }
       }
     }
   }
 }
 novo-search {
-  padding: 17px;
+  padding: 17px 17px 30px;
   > input[data-automation-id="novo-search-input"] {
-    padding: 8px 10px;
+    padding: 10px 10px;
     font-size: 1em;
   }
   button[theme="fab"][icon="bhi-search"] {
-    width: 40px;
-    height: 33px;
+    background: #fff !important;
+    width: unset !important;
+    height: unset !important;
     min-height: unset;
-    padding: 0;
+    padding: 12px !important;
+    font-size: 16px !important;
+    border: 1px solid rgba(24, 25, 26, 0.2);
+    border-right: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+
+    &:hover {
+      background: $primary-color !important;
+      border: none;
+      box-shadow: none;
+
+      .flex-wrapper {
+        i {
+          color: #fff;
+        }
+      }
+    }
 
     .flex-wrapper {
       i {
         font-size: 1em;
         line-height: 14px;
         padding: 0px;
+        color: $primary-color;
       }
     }
   }
@@ -117,9 +166,41 @@ app-sidebar {
       border-radius:4px;
     }
     label {
-      color: #2F384F !important;
-      font-weight: 600;
+      color: #616666 !important;
+      font-weight: 400;
     }
+    .bhi-checkbox-filled {
+      color: $primary-color !important;
+    }
+    div.checked label {
+      color: $primary-color !important;
+    }
+    & [class*='-group']:hover label i.bhi-checkbox-empty {
+      color: $primary-color !important;
+    }
+
+    [class*='-group']:hover span {
+      color: #18191A !important;
+    }
+
+    [class*='-group']:hover label i:before {
+      box-shadow: none !important;
+    }
+  }
+  novo-search > input[data-automation-id="novo-search-input"] {
+    background-color: white;
+    border: none;
+  }
+  input[type=text] {
+    border: 1px solid rgba(24, 25, 26, 0.2) !important;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  novo-search.focused > button i, novo-search > button i {
+    color: #fff;
+  }
+  novo-search > input:focus {
+    border: 1px solid $primary-color !important;
   }
 }
 
@@ -172,4 +253,137 @@ app-apply-modal {
   }
 }
 
+novo-search {
+  > input {
+    z-index: 8 !important;
+  }
+}
 
+.has-background {
+  background: #515151 !important;
+}
+
+button[theme="secondary"], button[theme="primary"] {
+  color: #ffffff !important;
+  font-size: 16px;
+  background: $primary-color !important;
+  border: 2px solid $primary-color !important;
+  border-radius: 5px;
+  transition: 0.3s;
+  text-align: center !important;
+  cursor: pointer;
+  text-transform: none;
+
+  &:hover, &:active, &:focus {
+    box-shadow: none !important;
+  }
+}
+button[theme="icon"] {
+  color: $primary-color;
+}
+
+button[theme="dialogue"] {
+  background: #fff !important;
+  border: 2px solid $primary-color !important;
+  color: $primary-color !important;
+}
+
+.job-description-text {
+  word-break: break-word;
+  padding-top: 50px;
+  font-family: $font-family;
+  font-size: 16px;
+  
+  ul {
+    margin: 16px 0 !important;
+    padding-left: 40px !important;
+    list-style: unset !important;
+      li {
+        list-style: unset !important;
+      }
+  }
+
+  p {
+    font-family: $font-family !important;
+    font-size: 16px !important;
+    line-height: 28px !important;
+    color: #18191A !important;
+    padding: 0 !important;
+  }
+  h1 {
+    font-size: 26px !important;
+  }
+  h2 {
+    font-size: 22px !important;
+  }
+  h3 {
+    font-size: 18px !important;
+  }
+}
+
+header[theme] > section {
+  height: 45px !important;
+}
+.novo-header {
+  background: #fff !important;
+  color: #333 !important;
+  border-bottom: 1px solid #515151 !important;
+
+  .header-title {
+    font-family: $font-family !important;
+    font-size: 18px !important;
+    font-weight: 400;
+  }
+  .job-details:first-of-type {
+    font-family: $font-family !important;
+    font-size: 18px !important;
+  }
+  .job-details:nth-of-type(2) {
+    color: #333;
+  }
+  .bhi-times {
+    color: #333 !important;
+  }
+}
+
+button[theme][theme='primary'][icon] i {
+  background: none !important;
+}
+
+novo-file-input .file-input-group label.boxed,
+.file-input-group:hover label.boxed {
+  border: 2px dashed $primary-color !important;
+}
+
+novo-checkbox [class*='-group']:hover label i:before {
+  box-shadow: none;
+}
+novo-checkbox [class*='-group']:hover {
+  .bhi-checkbox-empty, .bhi-checkbox-filled {
+    color: $primary-color !important;
+  }
+}
+
+novo-checkbox [class*='-group'] {
+  .bhi-checkbox-filled {
+    color: $primary-color !important;
+  }
+
+}
+
+.consent-checkbox-label a, .link {
+  color: $primary-color !important;
+}
+
+novo-toast.success {
+  background: $primary-color;
+  font-family: $font-family;
+
+  .toast-icon {
+    background: none;
+  }
+}
+
+novo-modal-container {
+  overflow: auto;
+}

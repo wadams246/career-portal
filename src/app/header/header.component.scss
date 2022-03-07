@@ -1,0 +1,180 @@
+@import '../../index.scss';
+@import '../../mixins.scss';
+
+#header {
+  width: $header-width;
+  height: $header-height;
+  position: absolute;
+  z-index: 999;
+  background: $secondary-color;
+
+  * {
+    font-size: 18px;
+  }
+
+  .header-container {
+    display: flex;
+    height: $header-height;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    .logo-container {
+
+      .logo {
+        img {
+          height: $logo-height;
+          width: $logo-width;
+        }
+      }
+    }
+
+    .nav-container {
+      display: none;
+
+      @include tablet() {
+        display: flex;
+      }
+
+      .nav-content {
+        ul.links {
+          display: flex;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            padding: 0;
+            margin: 0;
+            a {
+              color: $primary-color;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .mobile-nav-container {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: $primary-color;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s ease-in-out;
+
+      &.open {
+        height: 205px;
+      }
+
+
+      @include tablet() {
+        display: none;
+      }
+
+      .mobile-nav-content {
+        width: 100%;
+        ul.links {
+          display: flex;
+          flex-flow: column;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          width: 100%;
+
+          li {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            a {
+              display: block;
+              font-size: inherit;
+              width: 100%;
+              padding: 10px 0;
+              text-align: center;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+
+    .icon-container {
+      .mobile-menu-toggle {
+        display: block;
+        padding: 0px 5px;
+
+        @include tablet() {
+          display: none;
+        }
+
+        .lines {
+          display: inline-block;
+          width: 20px;
+          height: 2px;
+          -webkit-border-radius: 5px;
+          -webkit-background-clip: padding-box;
+          -moz-border-radius: 5px;
+          -moz-background-clip: padding;
+          border-radius: 5px;
+          background-clip: padding-box;
+          background: $primary-color;
+          position: relative;
+          top: -2px;
+          transition: background 0.3s 0s ease-in-out;
+
+          &:before, &:after {
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            -webkit-border-radius: 5px;
+            -webkit-background-clip: padding-box;
+            -moz-border-radius: 5px;
+            -moz-background-clip: padding;
+            border-radius: 5px;
+            background-clip: padding-box;
+            background: $primary-color;
+            position: absolute;
+            left: 0;
+            content: '';
+            transform-origin: 50% 50%;
+            transition: top 0.3s ease-in-out,transform 0.3s ease-in-out;
+            -webkit-transition: top 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+          }
+
+          &:before {
+            top: 6px;
+          }
+          &:after {
+            top: -6px;
+          }
+
+          &.open {
+            transition: background 0.3s 0s ease-in-out;
+            background: transparent !important;
+
+            &:before, &:after {
+              transition: top 0.3s ease-in-out,transform 0.3s ease-in-out;
+              top: 0;
+              width: 20px;
+              transform-origin: 50% 50%;
+            }
+
+            &:before {
+              -webkit-transform: rotate3d(0, 0, 1, 45deg);
+              transform: rotate3d(0, 0, 1, 45deg);
+            }
+
+            &:after {
+              -webkit-transform: rotate3d(0, 0, 1, -45deg);
+              transform: rotate3d(0, 0, 1, -45deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}

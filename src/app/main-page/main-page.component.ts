@@ -42,4 +42,12 @@ export class MainPageComponent {
     this.error = showError;
   }
 
+  // public onScroll(e) {
+  //   if (e.target.scrollTop > 60) {
+  //     document.getElementById('header-container').classList.add('header--sticky');
+  //   } else {
+  //     document.getElementById('header-container').classList.remove('header--sticky');
+  //   }
+  // }
+
 }

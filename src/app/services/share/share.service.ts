@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
 export class ShareService {
 
   private requestParams: any;
+  currentLanguage = 'en';
 
   constructor() {
     this.requestParams = {
       additionalEmailInfo: (job: any) => '?subject=' + encodeURIComponent(job.title) + '&body=' + this.description(job, window.location.href) + this.additionalEmailInfo(job),
-      facebook: () => '?display=popup&app_id=' + this.config.keys.facebook + '&href=' + encodeURIComponent(window.location.href) + '&redirect_uri=' + encodeURIComponent('https://www.facebook.com/') + '&source=facebook',
+      facebook: ()=> '?u=' + encodeURIComponent(window.location.href) + '&src=sdkpreparse',
       twitter: (job: any) => '?text=' + encodeURIComponent(this.description(job)) + '&url=' + encodeURIComponent(window.location.href) + '&source=twitter',
       linkedin: (job: any) => '?mini=true&source=Bullhorn%20Career%20Portal&title=' + encodeURIComponent(this.description(job)) + '&url=' + encodeURIComponent(window.location.href) + '&source=linkedin',
       email: (job: any) => '?subject=' + encodeURIComponent(job.title) + '&body=' + this.description(job, window.location.href),
@@ -18,7 +19,7 @@ export class ShareService {
   get config(): any {
     return {
       url: {
-        facebook: 'https://www.facebook.com/dialog/share',
+        facebook: 'https://www.facebook.com/dialog/sharer/sharer.php',
         twitter: 'https://twitter.com/intent/tweet',
         linkedin: 'https://www.linkedin.com/shareArticle',
       },
@@ -33,7 +34,8 @@ export class ShareService {
   }
 
   public facebook(job: any): any {
-    window.open(this.config.url.facebook + this.requestParams.facebook(job));
+    const facebookURL = this.requestParams.facebook(job)
+    window.open(this.config.url.facebook + facebookURL);
   }
 
   public linkedin(job: any): any {

@@ -1,0 +1,18 @@
+@import '../mixins.scss';
+@import '../index.scss';
+
+.route-container {
+  height: 100%;
+  padding-top: $header-height;
+  transition: padding .2s linear;
+
+  // @include desktop() {
+  //   padding-top: 76px;
+  // }
+
+  // &.scrolled {
+  //   @include desktop() {
+  //     padding-top: 56px;
+  //   }
+  // }
+}
